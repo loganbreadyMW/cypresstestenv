@@ -6,17 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "cypress": "^12.17.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "express": "^4.18.2",
+    "lowdb": "^6.0.1",
     "next": "13.4.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "recoil": "^0.7.7",
+    "styled-components": "^6.0.4",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.26"
   }
 }
