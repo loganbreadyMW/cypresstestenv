@@ -33,7 +33,9 @@ app.put("/todos/:id", (req, res) => {
   const todo = todos.find((todo) => todo.id === id);
   if (todo) {
     todo.title = title || todo.title;
-    todo.completed = completed || todo.completed;
+    if (completed !== undefined) {
+      todo.completed = completed;
+    }
     res.json(todo);
   } else {
     res.status(404).json({ message: "Todo not found" });
