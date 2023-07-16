@@ -1,23 +1,35 @@
+import { Todo } from "@/pages";
 import { useState } from "react";
+import axios from "axios";
 
-interface AddTodoProps {
-  setTodos: any;
+export interface AddTodoProps {
+  addTodo: (newTodo: Todo) => void;
 }
 
-export const AddTodo = ({ setTodos }: AddTodoProps) => {
-  const [newTodo, setNewTodo] = useState<string>("");
-  const onClick = () => {
-    setTodos((todos: string[]) => [...todos, newTodo]);
-    setNewTodo("");
+export const AddTodo = ({ addTodo }: AddTodoProps) => {
+  const [todo, setTodo] = useState("");
+
+  const addNewTodo = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/todos", {
+        title: todo,
+      });
+      const newTodo: Todo = response.data;
+      addTodo(newTodo);
+      setTodo("");
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <div>
       <input
         type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
       />
-      <button onClick={() => onClick()}>Add Todo</button>
+      <button onClick={addNewTodo}>Add Todo</button>
     </div>
   );
 };

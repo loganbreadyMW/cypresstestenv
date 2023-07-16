@@ -1,12 +1,27 @@
+import React from "react";
+import { TodoItem } from "./TodoItem";
+import { Todo } from "@/pages";
+
 interface TodoListProps {
-  todos: string[];
+  todos: Todo[];
+  onDelete: (id: number) => void;
+  onToggleComplete: (id: number) => void;
 }
 
-export const TodoList = ({ todos }: TodoListProps) => {
+export const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  onDelete,
+  onToggleComplete,
+}) => {
   return (
     <ul>
-      {todos.map((todo, index) => (
-        <li key={index}>{todo}</li>
+      {todos.map((todo: Todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onDelete={onDelete}
+          onToggleComplete={onToggleComplete}
+        />
       ))}
     </ul>
   );
