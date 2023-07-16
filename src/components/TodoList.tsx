@@ -1,6 +1,7 @@
 import React from "react";
 import { TodoItem } from "./TodoItem";
 import { Todo } from "@/pages";
+import styles from "../styles/Home.module.scss";
 
 interface TodoListProps {
   todos: Todo[];
@@ -14,7 +15,7 @@ export const TodoList: React.FC<TodoListProps> = ({
   onToggleComplete,
 }) => {
   return (
-    <ul>
+    <ul className={styles.todoListContainer}>
       {todos.map((todo: Todo) => (
         <TodoItem
           key={todo.id}

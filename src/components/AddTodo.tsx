@@ -1,6 +1,7 @@
 import { Todo } from "@/pages";
 import { useState } from "react";
 import axios from "axios";
+import styles from "../styles/Home.module.scss";
 
 export interface AddTodoProps {
   addTodo: (newTodo: Todo) => void;
@@ -28,8 +29,11 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
         type="text"
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
+        className={styles.input}
       />
-      <button onClick={addNewTodo}>Add Todo</button>
+      <button className={styles.addTodoButton} onClick={addNewTodo}>
+        Add Todo
+      </button>
     </div>
   );
 };

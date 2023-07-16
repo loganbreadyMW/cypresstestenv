@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AddTodo } from "@/components/AddTodo";
 import { TodoList } from "@/components/TodoList";
+import styles from "../styles/Home.module.scss";
 
 export interface Todo {
   id: number;
@@ -60,13 +61,15 @@ export default function Home() {
 
   return (
     <main>
-      <div>
-        <AddTodo addTodo={addNewTodo} />
-        <TodoList
-          todos={todos}
-          onDelete={handleDeleteTodo}
-          onToggleComplete={handleToggleComplete}
-        />
+      <div className={styles.home}>
+        <div className={styles.todoContainer}>
+          <AddTodo addTodo={addNewTodo} />
+          <TodoList
+            todos={todos}
+            onDelete={handleDeleteTodo}
+            onToggleComplete={handleToggleComplete}
+          />
+        </div>
       </div>
     </main>
   );
