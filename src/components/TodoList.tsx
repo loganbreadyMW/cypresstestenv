@@ -15,7 +15,7 @@ export const TodoList: React.FC<TodoListProps> = ({
   onToggleComplete,
 }) => {
   return (
-    <ul className={styles.todoListContainer}>
+    <ul className={styles.todoListContainer} data-testid="todoListContainer">
       {todos.map((todo: Todo) => (
         <TodoItem
           key={todo.id}

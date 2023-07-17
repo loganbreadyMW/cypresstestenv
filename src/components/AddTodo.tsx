@@ -30,8 +30,13 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
         className={styles.input}
+        data-testid="add-todo-input"
       />
-      <button className={styles.addTodoButton} onClick={addNewTodo}>
+      <button
+        data-testid="add-todo-button"
+        className={styles.addTodoButton}
+        onClick={addNewTodo}
+      >
         Add Todo
       </button>
     </div>
