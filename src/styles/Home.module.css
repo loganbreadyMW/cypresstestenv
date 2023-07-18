@@ -68,3 +68,8 @@
   align-items: center;
   color: #000;
 }
+
+.completed {
+  color: #ccc;
+  background-color: green;
+}

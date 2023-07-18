@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AddTodo } from "@/components/AddTodo";
 import { TodoList } from "@/components/TodoList";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/Home.module.css";
 
 export interface Todo {
   id: number;

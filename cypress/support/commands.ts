@@ -10,28 +10,23 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+Cypress.Commands.add("createTodo", (todo: string) => {
+  cy.get('[data-testid="add-todo-input"]').should("exist").click().type(todo);
+  cy.get('[data-testid="add-todo-button"]').should("exist").click();
+});
+
+Cypress.Commands.add("networkCreateTodo", (todo: string) => {
+  cy.intercept("POST", "/todos", {
+    statusCode: 201,
+    body: {
+      title: todo,
+    },
+  });
+});
+
+declare namespace Cypress {
+  interface Chainable<Subject> {
+    createTodo: (todo: string) => void;
+    networkCreateTodo: (todo: string) => void;
+  }
+}

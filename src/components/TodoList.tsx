@@ -1,7 +1,7 @@
 import React from "react";
 import { TodoItem } from "./TodoItem";
 import { Todo } from "@/pages";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/Home.module.css";
 
 interface TodoListProps {
   todos: Todo[];

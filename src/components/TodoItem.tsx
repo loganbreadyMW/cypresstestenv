@@ -1,6 +1,6 @@
 import { Todo } from "@/pages";
 import React from "react";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/Home.module.css";
 
 interface TodoItemProps {
   todo: Todo;
@@ -16,10 +16,18 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   const { id, title, completed } = todo;
 
   return (
-    <li key={id} className={styles.todoItem}>
+    <li
+      key={id}
+      className={`${styles.todoItem} ${completed ? styles.completed : ""}`}
+    >
       {title}
       <div style={{ display: "flex" }}>
-        <div style={{ marginRight: "10px" }}>
+        <div
+          style={{
+            marginRight: "10px",
+            textDecoration: completed ? "line-through" : "",
+          }}
+        >
           <label className={styles.todoLabel} htmlFor="completed">
             Completed
           </label>
