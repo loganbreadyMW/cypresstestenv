@@ -11,14 +11,3 @@ describe("Network tests", () => {
     });
   });
 });
-
-// it("should delete a todo", () => {
-//   cy.visit("http://localhost:3000");
-//   const todoId = "123"; // Specify the ID of the todo to delete
-//   cy.intercept("DELETE", `/todos/${todoId}`).as("deleteTodo");
-//   // Perform actions to delete the specified todo
-//   cy.wait("@deleteTodo").then((interception) => {
-//     expect(interception.response?.statusCode).to.equal(200);
-//     // Additional assertions or actions based on the delete response
-//   });
-// });

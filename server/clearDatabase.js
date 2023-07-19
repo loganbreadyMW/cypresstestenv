@@ -2,11 +2,11 @@ const { Pool } = require("pg");
 
 async function clearTodoTable() {
   const pool = new Pool({
-    host: "localhost",
-    user: "postgres",
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
     port: 5432,
-    password: "postgres",
-    database: "loganbready",
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
   });
 
   try {
