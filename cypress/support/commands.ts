@@ -15,15 +15,6 @@ Cypress.Commands.add("createTodo", (todo: string) => {
   cy.get('[data-testid="add-todo-button"]').should("exist").click();
 });
 
-Cypress.Commands.add("networkCreateTodo", (todo: string) => {
-  cy.intercept("POST", "/todos", {
-    statusCode: 201,
-    body: {
-      title: todo,
-    },
-  });
-});
-
 declare namespace Cypress {
   interface Chainable<Subject> {
     createTodo: (todo: string) => void;
